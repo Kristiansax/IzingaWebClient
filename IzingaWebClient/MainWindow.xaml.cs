@@ -46,16 +46,16 @@ namespace IzingaWebClient
 
         static async Task<List<Event>> GetProductAsync(string path)
         {
-            List<Event> incident = new List<Event>();
-            incident = null;
+            List<Event> eventList = new List<Event>();
+            eventList = null;
 
             HttpResponseMessage response = await client.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
                 string json = await response.Content.ReadAsAsync<string>();
-                incident = JsonConvert.DeserializeObject<List<Event>>(json);
+                eventList = JsonConvert.DeserializeObject<List<Event>>(json);
             }
-            return incident;
+            return eventList;
         }
 
         private async void Fetchlog_Click(object sender, RoutedEventArgs e)
